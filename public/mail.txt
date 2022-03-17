@@ -1,0 +1,18 @@
+$email = $request->email;
+// get a current date & time
+$date = date('Y-m-d H:i:s');
+$to = "sidhdharth@nyxwolves.com";
+// add cc
+// $cc = "fabricatear@gmail.com";
+// $cc2 = "teammicrosaas@gmail.com";
+$cc = "fabricatear@gmail.com";
+$subject = "You have a New Subscriber on FabricateAR!";
+$message = "Email ID :" . $email . "\r\n" . 'Date & Time :' . $date;
+$headers = "From: FabricateAR <noreply@fabricatear.com>";
+    $headers .= "Cc: " . $cc . "\r\n";
+
+    if (mail($to, $subject, $message, $headers)) {
+    return response()->json(['message' => 'Success'], 201);
+    } else {
+    return response()->json(['error' => 'Something Went Wrong'], 403);
+    }
