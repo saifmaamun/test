@@ -2,6 +2,7 @@ import GoogleLogo from './img/google-logo.png';
 import {
   AuthWrapper,
   Button,
+  FacebookButton,
   FormGroup,
   GoogleButton,
   LoginButtons,
@@ -14,11 +15,21 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
-  const {user, handleUserLogin, error, logOut, googleSignin
+  const { user, handleUserLogin, error, logOut, googleSignin, facebookSignin
 }=useAuth()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [agree, setAgree] = useState(false);
   const history = useHistory();
+
+// agree on terms and conditions
+  const checkboxHandler = () => {
+    console.log(agree)
+    setAgree(!agree);
+    console.log(agree)
+  };
+
+
 
 // capture the email
   const hanldeEmail = (e) => {
@@ -33,29 +44,29 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    console.log(email,password)
-    handleUserLogin(email, password);
-    history.push('/dashboard')
+    handleUserLogin(email, password,history);
     
   };
   
   // 
   // google login
   const googleLogin = () => {
-    googleSignin()
-    // if (user) {
-    //   history.push('/dashboard')
-    // }
-    
+    googleSignin(history)
     }
-
-
+// 
+  // facebook login
+  const facebookLogin = () => {
+    facebookSignin(history)
+    console.log(user);
+    }
 // 
 
 
 
-
-
+// 
+  const btnHandler = () => {
+    alert('The buttion is clickable!');
+  };
 
 
   return (
@@ -63,6 +74,9 @@ const Login = () => {
       <LoginFormContainer>
         <h1>Hello ! Welcome back.</h1>
         <p>Log in with your credentials</p>
+        {error ? 
+          <p style={{color:"red"}}> enter a valid email address or password </p> 
+        : <p></p> }
         <LoginForm>
           <FormGroup>
             <label>Email Address</label>
@@ -75,9 +89,24 @@ const Login = () => {
             </label>
             <input type='password' name='password' placebolder='Password' onBlur={hanldePassword} />
           </FormGroup>
+          <div>
+            <input type="checkbox" id="rem" onChange={checkboxHandler} />
+            <label htmlFor="agree"> Remember Me</label>
+          </div>
 
-          <LoginButtons>
-            <Button onClick={handleLogin} >Log in</Button> <br />
+          <br />
+
+          <div>
+            <input type="checkbox" id="agree" onChange={checkboxHandler} />
+            <label htmlFor="agree"> I agree to <b>terms and conditions</b></label>
+          </div>
+          <br />
+         
+          
+
+
+          <LoginButtons >
+           <Button onClick={handleLogin} >Log in</Button><br />
             <OrDivider>
               <span />
               OR
@@ -85,7 +114,7 @@ const Login = () => {
             </OrDivider>
              
             
-            <GoogleButton onClick={googleLogin} >
+            <GoogleButton  onClick={googleLogin} >
              
 
               <img src={GoogleLogo} alt='google-logo' />
@@ -93,6 +122,15 @@ const Login = () => {
               
 
             </GoogleButton>
+
+            <FacebookButton onClick={facebookLogin} >
+             
+
+              <img src={GoogleLogo} alt='google-logo' />
+              <span>Sign in with Facebook</span>
+              
+
+            </FacebookButton>
              
             <h3>{user.displayName}</h3>
             <Button onClick={logOut}>logOut</Button>

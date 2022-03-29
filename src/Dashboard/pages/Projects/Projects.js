@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaSearch, FaTimes } from 'react-icons/fa';
 import { DropDownContainer } from '../Dashboard/Dashboard.styled';
 import { Col25, DropDown, Row } from '../../../styles/utils.styled';
@@ -11,96 +11,122 @@ import {
   DeletePopup,
   ModelContainer,
 } from './Projects.styled';
+import { useHistory } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Projects = () => {
-  const initialProjects = [
-    {
-      id: 1,
-      name: 'Model.fabricatear.com',
-      status: 'Published',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
-    },
-    {
-      id: 5,
-      name: 'Model.fabricatear.com',
-      status: 'Disabled',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
-    },
-    {
-      id: 6,
-      name: 'Model.fabricatear.com',
-      status: 'Draft',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
-    },
-    {
-      id: 2,
-      name: 'Model.fabricatear.com',
-      status: 'Published',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
-    },
-    {
-      id: 3,
-      name: 'Model.fabricatear.com',
-      status: 'Published',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
-    },
-    {
-      id: 4,
-      name: 'Model.fabricatear.com',
-      status: 'Draft',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
-    },
-    {
-      id: 7,
-      name: 'Model.fabricatear.com',
-      status: 'Published',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
-    },
-    {
-      id: 8,
-      name: 'Model.fabricatear.com',
-      status: 'Disabled',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
-    },
-    {
-      id: 9,
-      name: 'Model.fabricatear.com',
-      status: 'Published',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
-    },
-    {
-      id: 10,
-      name: 'Model.fabricatear.hello',
-      status: 'Disabled',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
-    },
-  ];
-  const [projects, setProjects] = useState(initialProjects);
-  const [isPopupOpen, setPopupOpen] = useState(false);
+  const { serverUrl, localUrl } = useAuth()
+  const [projects, setProjects] = useState([]);
+  const history = useHistory();
+
+  useEffect(() => {
+    fetch(`${localUrl}/projects/getAll`)
+      .then(res => res.json())
+      // .then(data => console.log(data))
+      .then(data => setProjects(data))
+  }, [])
+
+
+  const createProject = () => {
+    history.push("/createprojects");
+  }
+
+
+
+
+
+
+  // const initialProjects = [
+  //   {
+  //     id: 1,
+  //     name: 'Model.fabricatear.com',
+  //     status: 'Published',
+  //     description:
+  //       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
+  //   },
+  //   {
+  //     id: 5,
+  //     name: 'Model.fabricatear.com',
+  //     status: 'Disabled',
+  //     description:
+  //       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
+  //   },
+  //   {
+  //     id: 6,
+  //     name: 'Model.fabricatear.com',
+  //     status: 'Draft',
+  //     description:
+  //       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Model.fabricatear.com',
+  //     status: 'Published',
+  //     description:
+  //       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
+  //   },
+  //   {
+  //     id: 3,
+  //     name: 'Model.fabricatear.com',
+  //     status: 'Published',
+  //     description:
+  //       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
+  //   },
+  //   {
+  //     id: 4,
+  //     name: 'Model.fabricatear.com',
+  //     status: 'Draft',
+  //     description:
+  //       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
+  //   },
+  //   {
+  //     id: 7,
+  //     name: 'Model.fabricatear.com',
+  //     status: 'Published',
+  //     description:
+  //       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
+  //   },
+  //   {
+  //     id: 8,
+  //     name: 'Model.fabricatear.com',
+  //     status: 'Disabled',
+  //     description:
+  //       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
+  //   },
+  //   {
+  //     id: 9,
+  //     name: 'Model.fabricatear.com',
+  //     status: 'Published',
+  //     description:
+  //       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
+  //   },
+  //   {
+  //     id: 10,
+  //     name: 'Model.fabricatear.hello',
+  //     status: 'Disabled',
+  //     description:
+  //       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se',
+  //   },
+  // ];
+  // const [projects, setProjects] = useState(initialProjects);
+
+  // const onEdit = (id) => {
+  //   console.log('Edit project', id);
+  //   setCurrentId(id);
+  //   alert(id);
+  // };
   const [currentId, setCurrentId] = useState(null);
 
-  const onEdit = (id) => {
-    console.log('Edit project', id);
-    setCurrentId(id);
-    alert(id);
-  };
+  const [isPopupOpen, setPopupOpen] = useState(false);
+
+ 
   const onDelete = (id) => {
     setCurrentId(id);
     setPopupOpen(true);
   };
   const deleteConfirm = () => {
     // Remove a particular project from the list
-    const newProjects = projects.filter((project) => project.id !== currentId);
+    const newProjects = projects.filter((project) => project._id !== currentId);
     setProjects(newProjects);
     setPopupOpen(false);
   };
@@ -135,15 +161,20 @@ const Projects = () => {
       </MenubarContainer>
 
       <ProjectsContainer>
+          <button onClick={()=>createProject()}>Xarwin AR</button>
         <Row>
-          {projects.map(({ id, status, name, description }) => (
-            <Col25 key={id}>
+          {projects.map((project) => (
+            <Col25 key={project._id}>
               <ProjectCard
-                id={id}
-                status={status}
-                name={name}
-                description={description}
-                onEdit={onEdit}
+                key={project._id}
+                id={project._id}
+                projectName={project.Project_Name}
+                thumbnail={project.Thumbnail}
+                description={project.Description}
+                userId={project.User_Id}
+                modelId={project.Model_Id}
+                templateId={project.Template_Id}
+                status={project.Status}
                 onDelete={onDelete}
               />
             </Col25>

@@ -111,3 +111,21 @@ export const GoogleButton = styled.div`
     opacity: 0.8;
   }
 `;
+export const FacebookButton = styled.div`
+  background: #ffffff;
+  border: 1px solid #ebebeb;
+  padding: 10px 0;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  img {
+    width: 25px;
+    margin-right: 15px;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+`;

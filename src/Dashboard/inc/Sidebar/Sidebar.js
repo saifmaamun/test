@@ -68,6 +68,17 @@ const Sidebar = () => {
               Models
             </MenuItem>
           )}
+          {location.pathname === '/addmodel' ? (
+            <MenuItem onClick={() => history.push('/addmodel')} active>
+              <RiBarChart2Fill />
+              Add Model
+            </MenuItem>
+          ) : (
+              <MenuItem onClick={() => history.push('/addmodel')}>
+              <RiBarChart2Fill />
+                Add Model
+            </MenuItem>
+          )}
           {location.pathname === '/templates' ? (
             <MenuItem onClick={() => history.push('/templates')} active>
               <RiLayoutMasonryFill />

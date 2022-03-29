@@ -15,6 +15,10 @@ import ChangePassword from '../Dashboard/pages/Profile/ChangePassword';
 import PaymentHistory from '../Dashboard/pages/PaymentHistory/PaymentHistory';
 import Login from '../Dashboard/pages/Auth/Login';
 import AuthProvider from '../context/AuthProvider';
+import PrivateRoute from '../Dashboard/pages/PrivateRoute/PrivateRoute';
+import AddModel from '../Dashboard/pages/AddModel/AddModel';
+import CreateProjects from '../Dashboard/pages/CreateProjects/CreateProjects';
+import EditProject from '../Dashboard/pages/EditProject/EditProject';
 
 const MainBuilder = () => {
   return (
@@ -26,7 +30,10 @@ const MainBuilder = () => {
           <Layout>
             <Route exact path='/dashboard' component={Dashboard} />
             <Route exact path='/projects' component={Projects} />
+            <Route exact path='/editproject' component={EditProject} />
             <Route exact path='/models' component={Models} />
+            <Route exact path='/addmodel' component={AddModel} />
+            <Route exact path='/createprojects' component={CreateProjects} />
             <Route exact path='/templates' component={Templates} />
             <Route exact path='/settings' component={Settings} />
             <Route exact path='/profile' component={Profile} />

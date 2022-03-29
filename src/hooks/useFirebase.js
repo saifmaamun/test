@@ -5,11 +5,13 @@ import {
     signInWithEmailAndPassword,
     updateProfile,
     GoogleAuthProvider,
-    signInWithPopup
+    signInWithPopup,
+    FacebookAuthProvider
 } from "firebase/auth";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 import initializeAuthentication from "../Firebase/firebase.init";
 
 
@@ -17,6 +19,8 @@ initializeAuthentication();
 
 
 const useFirebase = () => {
+    const serverUrl ="http://18.216.106.110/"
+    const localUrl ="http://localhost:3001"
     const [user, setUser] = useState({})
     const auth = getAuth()
     const [isLoading, setIsLoading] = useState(true);
@@ -24,9 +28,10 @@ const useFirebase = () => {
     const history = useHistory();
 
     const googleProvider = new GoogleAuthProvider();
+    const facebookProvider = new FacebookAuthProvider ();
 
     // google login
-    const googleSignin = () => {
+    const googleSignin = (history) => {
 
         signInWithPopup(auth, googleProvider)
             .then((result) => {
@@ -42,15 +47,27 @@ const useFirebase = () => {
             
     }
 
+    // facebook Login
+    const facebookSignin = (history) => {
+        signInWithPopup(auth, facebookProvider)
+            .then((result) => {
+                setUser(result.user)
+                console.log(result.user);
+                history.push('/dashboard')
+            })
+}
+
+
+
 
 //  user login
 
-
-    const handleUserLogin = (email, password) => {
+    const handleUserLogin = (email, password,history) => {
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 console.log(result.user);
                 setUser(result.user);
+                history.push('/dashboard')
                 setError('')
             })
             .catch((error) => {
@@ -81,7 +98,6 @@ const useFirebase = () => {
             .then(() => {
                 setUser({})
             })
-    console.log('clicked')
     }
 
 
@@ -96,7 +112,11 @@ const useFirebase = () => {
         auth,
         user,
         handleUserLogin,
-        logOut
+        logOut,
+        facebookSignin,
+        error,
+        serverUrl,
+        localUrl
     }
 }
 
