@@ -7,7 +7,7 @@ import axios from "axios";
 import useAuth from '../../../hooks/useAuth';
 
 const CreateProjects = () => {
-    const { user, serverUrl} = useAuth();
+    const { user, serverUrl } = useAuth();
     const [models, setModels] = useState([])
     const categories = ["Animals & Pets",
     "Architecture",
@@ -58,9 +58,13 @@ const CreateProjects = () => {
 
         const userProject = {
             user: user.displayName,
-            project: form.project,
+            User_Id:user.uid,
+            Project_Name: form.project,
+            Description:form.description,
+            Thumbnail: form.thumbnail,
+            Status: form.status,
             format: form.format,
-            model: form.model
+            Model_Id: form.model
         };
 
         console.log(userProject);
@@ -75,7 +79,6 @@ const CreateProjects = () => {
             console.log(err);
         }
     };
-
     return (
         <div>
             <h1>Create Project</h1>
@@ -99,6 +102,42 @@ const CreateProjects = () => {
                     />
                 </div>
                 <div>
+                    <label htmlFor="description">Description </label>
+                    <input
+                        type="text"
+                        id="description"
+                        value={form.description}
+                        onChange={(e) => onChange({ description: e.target.value })}
+                    />
+                </div>
+                {/* <div>
+                    <label htmlFor="thumbnail">Thumbnail </label>
+                    <input
+                        type="url"
+                        id="thumbnail"
+                        value={form.thumbnail}
+                        onChange={(e) => onChange({ project: e.target.value })}
+                    />
+                </div> */}
+                <div>
+                    <label htmlFor="userId">userId </label>
+                    <input
+                        type="text"
+                        id="userId"
+                        value={user.uid}
+                        // onChange={(e) => onChange({ project: e.target.value })}
+                    />
+                </div>
+                {/* <div>
+                    <label htmlFor="status">Status </label>
+                    <input
+                        type="text"
+                        id="status"
+                        value={form.status}
+                        onChange={(e) => onChange({ project: e.target.value })}
+                    />
+                </div> */}
+                <div>
                     <label htmlFor="model">Models </label>
                     <select
                         type="select"
@@ -111,9 +150,9 @@ const CreateProjects = () => {
                             models.map((model) => (
 
                                 <option
-                                    value={model.name}
+                                    value={model._id}
                                     id={model._id}
-                                >{model.name}</option>
+                                >{model.Model_Name}</option>
 
                             ))
                         }

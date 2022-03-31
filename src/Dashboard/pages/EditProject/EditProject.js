@@ -28,7 +28,7 @@ const EditProject = () => {
             .then(data => setProject(data))
             fetch(`${serverUrl}/models/${project.Model_Id}`)
             .then(res => res.json())
-                .then(data => setModel(data))
+            .then(data => setModel(data))
         }
     }, [project])
     console.log("project",project)
@@ -37,14 +37,16 @@ const EditProject = () => {
     return (
         <div>
             
+            <p> {project ? project.Project_Name : ""} </p>
             <p> {project ? project.Model_Id : ""} </p>
+            <p> {model ? model.Resource_Url : ""} </p>
             <p> {model ? model.Resource_Url : ""} </p>
             
             
-            {/* <div>
+            <div>
                 <model-viewer
                     style={{ width: '500px', height: '800px' }}
-                    src={`https://raw.githubusercontent.com/prajwalj27/ar-model-viewer/main/server/3d-models/${user}/${project}/scene.${format}`}
+                    src={model ? model.Resource_Url : ""}
                     ios-src=""
                     poster=""
                     alt="A 3D model of an astronaut"
@@ -53,7 +55,7 @@ const EditProject = () => {
                     auto-rotate
                     ar
                 ></model-viewer>
-            </div> */}
+            </div>
             
 
 
