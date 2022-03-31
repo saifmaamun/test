@@ -18,8 +18,7 @@ const ProjectCard = ({ id, projectId, projectName, thumbnail, description, userI
   const history =useHistory()
 
   const onEdit = () => {
-    
-    history.push("/editproject/:id");
+    history.push(`/editproject/${id}`);
   };
 
   

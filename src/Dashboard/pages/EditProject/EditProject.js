@@ -10,7 +10,8 @@ const EditProject = () => {
     const { id } = useParams();
     const [project, setProject] = useState();
     const [model, setModel] = useState();
-
+    
+    
     
     
     
@@ -21,14 +22,15 @@ const EditProject = () => {
     }, [])
     useEffect(() => {
         if (project) {
+            
             fetch(`${serverUrl}/projects/${id}`)
             .then(res => res.json())
-                .then(data => setProject(data))
+            .then(data => setProject(data))
             fetch(`${serverUrl}/models/${project.Model_Id}`)
-                .then(res => res.json())
+            .then(res => res.json())
                 .then(data => setModel(data))
         }
-        }, [project])
+    }, [project])
     console.log("project",project)
     console.log("model",model)
 
