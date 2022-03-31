@@ -56,7 +56,7 @@ const AddModel = () => {
                     </div>
                 </Form>
                 <Form onSubmit={handleSubmit(onSubmit)}>    
-                    <input {...register("name", { required: true })} placeholder='Name' /> 
+                    <input {...register("Model_Name", { required: true })} placeholder='Name' /> 
 
                     <input {...register("description", { required: true })} placeholder='Details' />
                     <input {...register("Type", { required: true })} defaultValue="Original" />

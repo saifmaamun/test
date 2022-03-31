@@ -12,6 +12,9 @@ const ProjectCard = ({ id, projectId, projectName, thumbnail, description, userI
   console.log(id, modelId);
 
 
+
+
+
   const history =useHistory()
 
   const onEdit = () => {
