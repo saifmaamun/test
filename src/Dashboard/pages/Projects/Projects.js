@@ -15,12 +15,12 @@ import { useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 const Projects = () => {
-  const { serverUrl, localUrl } = useAuth()
+  const { serverUrl } = useAuth()
   const [projects, setProjects] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
-    fetch(`${localUrl}/projects/getAll`)
+    fetch(`${serverUrl}/projects/getAll`)
       .then(res => res.json())
       // .then(data => console.log(data))
       .then(data => setProjects(data))
@@ -171,6 +171,7 @@ const Projects = () => {
                 projectName={project.Project_Name}
                 thumbnail={project.Thumbnail}
                 description={project.Description}
+                projectId={project.Project_Id}
                 userId={project.User_Id}
                 modelId={project.Model_Id}
                 templateId={project.Template_Id}

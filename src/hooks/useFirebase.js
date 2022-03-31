@@ -19,8 +19,8 @@ initializeAuthentication();
 
 
 const useFirebase = () => {
-    const serverUrl ="http://18.216.106.110/"
-    const localUrl ="http://localhost:3001"
+    // const serverUrl ="http://18.216.106.110:3001"
+    const serverUrl ="http://localhost:3001"
     const [user, setUser] = useState({})
     const auth = getAuth()
     const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +38,9 @@ const useFirebase = () => {
 
                 setUser(result.user)
                 history.push('/dashboard')
-                // saveUser(result.user.email, result.user.displayName, 'POST');
+                const Email = result.user.email
+                const Name = result.user.displayName
+                saveUser(Email, Name, 'POST');
             })
             .finally(() => {
                 
@@ -52,6 +54,9 @@ const useFirebase = () => {
         signInWithPopup(auth, facebookProvider)
             .then((result) => {
                 setUser(result.user)
+                const Email = result.user.email
+                const Name = result.user.displayName
+                saveUser(Email, Name, 'POST');
                 console.log(result.user);
                 history.push('/dashboard')
             })
@@ -100,7 +105,18 @@ const useFirebase = () => {
             })
     }
 
-
+// set user to database
+    const saveUser = (Email, Name, method) => {
+        const user = { Email, Name};
+        fetch(`${serverUrl}/users/create`, {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
 
 
 
@@ -115,8 +131,7 @@ const useFirebase = () => {
         logOut,
         facebookSignin,
         error,
-        serverUrl,
-        localUrl
+        serverUrl
     }
 }
 

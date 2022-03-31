@@ -5,11 +5,11 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 
 const Models = () => {
-  const { serverUrl,localUrl}=useAuth()
+  const { serverUrl}=useAuth()
   const [models, setModels] = useState([])
   
   useEffect(() => {
-    fetch(`${localUrl}/models/getAll`)
+    fetch(`${serverUrl}/models/getAll`)
       .then(res => res.json())
       // .then(data => console.log(data))
       .then(data => setModels(data))

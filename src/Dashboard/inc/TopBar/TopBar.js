@@ -11,7 +11,8 @@ import { useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 const TopBar = () => {
-const {user}=useAuth()
+  const { user } = useAuth()
+  const userImage=user.photoURL
 
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const history = useHistory();

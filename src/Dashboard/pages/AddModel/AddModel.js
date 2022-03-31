@@ -6,7 +6,8 @@ import { GrAttachment } from 'react-icons/gr';
 import useAuth from '../../../hooks/useAuth';
 
 const AddModel = () => {
-    const { serverUrl, localUrl } = useAuth()
+    const { serverUrl, user } = useAuth()
+    console.log(user)
     const { register, handleSubmit, reset } = useForm();
     // const [name,setName]=useState("")
     // const [description,setDescription]=useState("")
@@ -24,9 +25,10 @@ const AddModel = () => {
 
     const onSubmit = data => {
         console.log(data)
-        axios.post(`${localUrl}/models`, data)
+        axios.post(`${serverUrl}/models/create`, data)
             .then(res => {
                 if (res.data.insertedId) {
+                    console.log(data)
                     alert('Added Successfully')
                     reset()
                 }
@@ -53,27 +55,23 @@ const AddModel = () => {
                         <h4>Or</h4>
                     </div>
                 </Form>
-                <Form onSubmit={handleSubmit(onSubmit)}>
-                        
-                    
-                        
-                    <input {...register("name", { required: true })} placeholder='Name' /> <br />
-                         
+                <Form onSubmit={handleSubmit(onSubmit)}>    
+                    <input {...register("name", { required: true })} placeholder='Name' /> 
 
-                    
-                    <input {...register("description", { required: true })} placeholder='Details' /> <br />
-                      
+                    <input {...register("description", { required: true })} placeholder='Details' />
+                    <input {...register("Type", { required: true })} defaultValue="Original" />
+                    <input {...register("User_Id", { required: true })} defaultValue={user.uid} />
                         
-                    <input type="url" {...register("url", { required: true })} placeholder='Source Url' /> <br />
+                    <input type="url" {...register("Resource_Url", { required: true })} placeholder='Source Url' />
                          
                             
                    
                         
+                  
                                 <input type="submit" />
                     
 
                                 <input type="reset" />
-                  
                 </Form>
                 {/* <input onBlur={hanldeName} className="w-100 py-3 rounded border-info" type="email" placeholder="Email" />
                 <br />

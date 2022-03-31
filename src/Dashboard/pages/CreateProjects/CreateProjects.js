@@ -7,7 +7,7 @@ import axios from "axios";
 import useAuth from '../../../hooks/useAuth';
 
 const CreateProjects = () => {
-    const { user, serverUrl, localUrl} = useAuth();
+    const { user, serverUrl} = useAuth();
     const [models, setModels] = useState([])
     const categories = ["Animals & Pets",
     "Architecture",
@@ -30,7 +30,7 @@ const CreateProjects = () => {
     ]
 
     useEffect(() => {
-        fetch(`${localUrl}/models/getAll`)
+        fetch(`${serverUrl}/models/getAll`)
             .then(res => res.json())
             // .then(data => console.log(data))
             .then(data => setModels(data))
@@ -67,7 +67,7 @@ const CreateProjects = () => {
 
         try {
             const res = await axios.post(
-                `${localUrl}/projects/create`,
+                `${serverUrl}/projects/create`,
                 userProject
             );
             console.log(res);

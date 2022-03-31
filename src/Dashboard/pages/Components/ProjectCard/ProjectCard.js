@@ -1,13 +1,22 @@
 import { ProjectCardWrapper, StatusSpan } from './ProjectCard.styled';
 import ProductImage from './img/product.png';
 import { useHistory } from 'react-router-dom';
+import EditProject from '../../EditProject/EditProject';
 
-const ProjectCard = ({ id, projectName, thumbnail,description,userId, modelId, templateId, status, onDelete}) => {
+
+import React, { useEffect, useState } from 'react';
+import useAuth from '../../../../hooks/useAuth';
+import { Link } from 'react-router-dom';
+
+const ProjectCard = ({ id, projectId, projectName, thumbnail, description, userId, modelId, templateId, status, onDelete }) => {
+  console.log(id, modelId);
+
+
   const history =useHistory()
 
   const onEdit = () => {
-    alert(id);
-    history.push("/editproject");
+    
+    history.push(`/editproject/${id}`);
   };
 
   
@@ -18,9 +27,11 @@ const ProjectCard = ({ id, projectName, thumbnail,description,userId, modelId, t
       <StatusSpan status={status}>{status}</StatusSpan>
       <p>{description}</p>
       <div>
+
+
         
-       
         <button onClick={() => onEdit()}>Edit</button>
+      
         <button onClick={() => onDelete(id)}>Delete</button>
       </div>
         </ProjectCardWrapper>
