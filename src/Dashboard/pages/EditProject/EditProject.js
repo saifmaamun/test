@@ -31,8 +31,8 @@ const EditProject = () => {
             .then(data => setModel(data))
         }
     }, [project])
-    console.log("project",project)
-    console.log("model",model)
+    // console.log("project",project)
+    // console.log("model",model)
 
     return (
         <div>

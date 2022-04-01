@@ -5,10 +5,12 @@ import { useForm } from 'react-hook-form';
 
 import axios from "axios";
 import useAuth from '../../../hooks/useAuth';
+import { useHistory } from 'react-router-dom';
 
 const CreateProjects = () => {
     const { user, serverUrl } = useAuth();
     const [models, setModels] = useState([])
+    const history = useHistory();
     const categories = ["Animals & Pets",
     "Architecture",
     "Art & Abstract",
@@ -78,6 +80,8 @@ const CreateProjects = () => {
         } catch (err) {
             console.log(err);
         }
+        alert('Created Project Successfully')
+        history.push("/projects")
     };
     return (
         <div>

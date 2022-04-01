@@ -4,11 +4,13 @@ import { useForm } from 'react-hook-form';
 import { Form, ModelAddForm } from '../Models/Models.styled';
 import { GrAttachment } from 'react-icons/gr';
 import useAuth from '../../../hooks/useAuth';
+import { useHistory } from 'react-router-dom';
 
 const AddModel = () => {
     const { serverUrl, user } = useAuth()
     console.log(user)
     const { register, handleSubmit, reset } = useForm();
+    const history =useHistory();
     // const [name,setName]=useState("")
     // const [description,setDescription]=useState("")
     // const [url, setUrl] = useState("")
@@ -26,13 +28,15 @@ const AddModel = () => {
     const onSubmit = data => {
         console.log(data)
         axios.post(`${serverUrl}/models/create`, data)
-            .then(res => {
+        .then(res => {
+                console.log(res)
                 if (res.data.insertedId) {
-                    console.log(data)
-                    alert('Added Successfully')
-                    reset()
+                    console.log("added",data)
                 }
             })
+            alert('Added Successfully')
+            reset()
+        history.push("/createprojects")
     }
 
 
