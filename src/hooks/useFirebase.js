@@ -37,10 +37,11 @@ const useFirebase = () => {
             .then((result) => {
 
                 setUser(result.user)
-                history.push('/dashboard')
+                history.push('/projects')
                 const Email = result.user.email
                 const Name = result.user.displayName
-                saveUser(Email, Name, 'POST');
+                const Firebase_Id = result.user.uid
+                saveUser(Email, Name, Firebase_Id, 'POST');
             })
             .finally(() => {
                 
@@ -56,9 +57,10 @@ const useFirebase = () => {
                 setUser(result.user)
                 const Email = result.user.email
                 const Name = result.user.displayName
-                saveUser(Email, Name, 'POST');
+                const Firebase_Id = result.user.uid
+                saveUser(Email, Name, Firebase_Id, 'POST');
                 console.log(result.user);
-                history.push('/dashboard')
+                history.push('/projects')
             })
 }
 
@@ -72,7 +74,7 @@ const useFirebase = () => {
             .then((result) => {
                 console.log(result.user);
                 setUser(result.user);
-                history.push('/dashboard')
+                history.push('/projects')
                 setError('')
             })
             .catch((error) => {
@@ -106,8 +108,8 @@ const useFirebase = () => {
     }
 
 // set user to database
-    const saveUser = (Email, Name, method) => {
-        const user = { Email, Name};
+    const saveUser = (Email, Name, Firebase_Id, method) => {
+        const user = { Email, Name, Firebase_Id};
         fetch(`${serverUrl}/users/create`, {
             method: method,
             headers: {

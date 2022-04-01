@@ -5,37 +5,25 @@ import { Form, ModelAddForm } from '../Models/Models.styled';
 import { GrAttachment } from 'react-icons/gr';
 import useAuth from '../../../hooks/useAuth';
 import { useHistory } from 'react-router-dom';
+import "./AddModel.css"
 
 const AddModel = () => {
     const { serverUrl, user } = useAuth()
     console.log(user)
     const { register, handleSubmit, reset } = useForm();
-    const history =useHistory();
-    // const [name,setName]=useState("")
-    // const [description,setDescription]=useState("")
-    // const [url, setUrl] = useState("")
-    
-    // const hanldeName = (e) => {
-    //     setName(e.target.value);
-    // };
-    // const hanldeDescription = (e) => {
-    //     setDescription(e.target.value);
-    // };
-    // const hanldeUrl = (e) => {
-    //     setName(e.target.value);
-    // };
+    const history = useHistory();
 
     const onSubmit = data => {
         console.log(data)
         axios.post(`${serverUrl}/models/create`, data)
-        .then(res => {
+            .then(res => {
                 console.log(res)
                 if (res.data.insertedId) {
-                    console.log("added",data)
+                    console.log("added", data)
                 }
             })
-            alert('Added Successfully')
-            reset()
+        alert('Added Successfully')
+        reset()
         history.push("/createprojects")
     }
 
@@ -43,7 +31,7 @@ const AddModel = () => {
     return (
         <>
             <ModelAddForm>
-                <h3>Add new model</h3>
+                {/* <h3>Add new model</h3>
                 <Form>
                     <div>
                         <input type='text' placeholder='Upload Model Files' />
@@ -58,35 +46,43 @@ const AddModel = () => {
                     <div>
                         <h4>Or</h4>
                     </div>
-                </Form>
-                <Form onSubmit={handleSubmit(onSubmit)}>    
-                    <input {...register("Model_Name", { required: true })} placeholder='Model Name' /> 
+                </Form> */}
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                    <div>
 
-                    <input {...register("description", { required: true })} placeholder='Model Details' />
-                    <input {...register("Type")} defaultValue="Original" />
-                    <input {...register("User_Id", { required: true })} placeholder='User Id' defaultValue={user.uid} />
-                    <input {...register("Format", { required: true })} placeholder='Model Format' />
-                        
-                    <input type="url" {...register("Resource_Url", { required: true })} placeholder='Source Url' />
-                         
-                            
-                   
-                        
-                  
-                                <input type="submit" />
-                    
+                        <div className="row">
+                            <div className="column">
 
-                                <input type="reset" />
+                                <h3>Add Model Name</h3>
+                                <input {...register("Model_Name", { required: true })} placeholder='Model Name' /> <br />
+                                <h3>Add Model Descriptionl</h3>
+                                <input {...register("description", { required: true })} placeholder='Model Details' /><br />
+                                <h3>Add Model Type</h3>
+                                <input {...register("Type")} defaultValue="Original" /><br />
+                            </div>
+                            <div className="column">
+
+                                <h3>Add User Id</h3>
+                                <input {...register("User_Id", { required: true })} placeholder='User Id' defaultValue={user.uid} /><br />
+                                <h3>Add Model Format</h3>
+                                <input {...register("Format", { required: true })} placeholder='Model Format' /><br />
+                                <h3>Add Model Url</h3>
+                                <input type="url" {...register("Resource_Url", { required: true })} placeholder='Source Url' /><br />
+                                <br />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="column">
+                                
+                                <input className="submitButton" type="submit" /><br />
+</div>
+                            <div className="column">
+                                
+                                <input className="resetButton" type="reset" /><br />
+</div>
+                        </div>
+                    </div>
                 </Form>
-                {/* <input onBlur={hanldeName} className="w-100 py-3 rounded border-info" type="email" placeholder="Email" />
-                <br />
-                <br />
-                <input onBlur={hanldeDescription} type="password" placeholder="Password" />
-                <br />
-                <br />
-                <input onBlur={hanldeUrl} type="url" placeholder="Url" />
-                <br />
-                <button variant="contained" onClick={handleUpload} >Log In</button> */}
 
 
             </ModelAddForm>

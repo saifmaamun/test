@@ -39,7 +39,7 @@ const EditProject = () => {
     // console.log("model",model)
 
 // publish link
-    const url = `${serverUrl}/publishProject/${user.displayName}/${project?project.Project_Name:''}/${model?model.Format:''}`
+    const url = `${serverUrl}/publishProject/${user.displayName}/${project?project.Project_Name:''}`
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -63,13 +63,6 @@ const EditProject = () => {
         
         <div className="row">
             <div className="column">
-
-            
-            <p> {project ? project.Project_Name : ""} </p>
-            <p> {project ? project.Model_Id : ""} </p>
-            <p> {model ? model.Resource_Url : ""} </p>
-            
-            
             <div>
                 <model-viewer
                     style={{ width: '500px', height: '800px' }}
@@ -87,8 +80,8 @@ const EditProject = () => {
             <div className="column">
 
         <h2>want to share??</h2>    
-                <button onClick={() => generate()}>generate link</button>
-                <input type="text" name="Link" value={ url} id="" />
+                {/* <button onClick={() => generate()}>generate link</button> */}
+                <input className="inputFeild" type="text" name="Link" value={ url} id="" />
             </div>
 
 

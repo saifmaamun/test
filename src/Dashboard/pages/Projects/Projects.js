@@ -27,9 +27,6 @@ const Projects = () => {
   }, [])
 
 
-  const createProject = () => {
-    history.push("/createprojects");
-  }
 
 
 
@@ -161,7 +158,6 @@ const Projects = () => {
       </MenubarContainer>
 
       <ProjectsContainer>
-          <button onClick={()=>createProject()}>Xarwin AR</button>
         <Row>
           {projects.map((project) => (
             <Col25 key={project._id}>

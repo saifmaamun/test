@@ -58,13 +58,18 @@ const TopBar = () => {
       break;
   }
 
+  const createProject = () => {
+    history.push("/createprojects");
+  }
+
+
   return (
     <TopBarWrapper>
       <PageTitle>
         <h1>{pageTitle}</h1>
       </PageTitle>
       <ProfileActionSection>
-        <button>Fabricate Now</button>
+        <button onClick={() => createProject()}>Fabricate Now</button>
         <UserInfo>
           <>
             <div onClick={() => setIsProfileOpen(!isProfileOpen)}>

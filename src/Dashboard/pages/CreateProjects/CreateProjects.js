@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 
 import axios from "axios";
 import useAuth from '../../../hooks/useAuth';
+import "./CreateProjects.css"
 import { useHistory } from 'react-router-dom';
 
 const CreateProjects = () => {
@@ -59,12 +60,12 @@ const CreateProjects = () => {
         setFormat((prev) => form.format);
 
         const userProject = {
-            user: user.displayName,
+            Name: user.displayName,
             User_Id:user.uid,
             Project_Name: form.project,
             Description:form.description,
-            Thumbnail: form.thumbnail,
-            Status: form.status,
+            // Thumbnail: form.thumbnail,
+            // Status: form.status,
             Model_Id: form.model
         };
 
@@ -74,93 +75,98 @@ const CreateProjects = () => {
             const res = await axios.post(
                 `${serverUrl}/projects/create`,
                 userProject
-            );
-            console.log(res);
-        } catch (err) {
-            console.log(err);
-        }
-        alert('Created Project Successfully')
-        history.push("/projects")
+                );
+                console.log(res);
+            } catch (err) {
+                console.log(err);
+            }
+            alert('Created Project Successfully')
+            history.push("/projects")
     };
     return (
         <div>
             <h1>Create Project</h1>
-            <form>
+            <ModelAddForm>
+
+            
+                <Form>
+                    <div>
                 <div>
                     <label htmlFor="user">User </label>
+                            <div>
+                                
+
                     <input
                         type="text"
                         id="user"
                         value={user.displayName}
-                        // onChange={(e) => onChange({ user: e.target.value })}
-                    />
-                </div>
+                        />
+                        </div>
+                </div> <br />
                 <div>
-                    <label htmlFor="project">Project </label>
+                            <label htmlFor="project">Project </label>
+                            <div>
+
                     <input
                         type="text"
                         id="project"
                         value={form.project}
                         onChange={(e) => onChange({ project: e.target.value })}
-                    />
-                </div>
+                        />
+                        </div>
+                    </div> <br />
                 <div>
-                    <label htmlFor="description">Description </label>
+                            <label htmlFor="description">Description </label>
+                            <div>
+
                     <input
                         type="text"
                         id="description"
                         value={form.description}
                         onChange={(e) => onChange({ description: e.target.value })}
-                    />
-                </div>
-                {/* <div>
-                    <label htmlFor="thumbnail">Thumbnail </label>
-                    <input
-                        type="url"
-                        id="thumbnail"
-                        value={form.thumbnail}
-                        onChange={(e) => onChange({ project: e.target.value })}
-                    />
-                </div> */}
+                        />
+                        </div>
+                </div> <br />
+               
                 <div>
-                    <label htmlFor="userId">userId </label>
+                            <label htmlFor="userId">userId </label>
+                            <div>
+
                     <input
                         type="text"
                         id="userId"
                         value={user.uid}
                         // onChange={(e) => onChange({ project: e.target.value })}
-                    />
-                </div>
-                {/* <div>
-                    <label htmlFor="status">Status </label>
-                    <input
-                        type="text"
-                        id="status"
-                        value={form.status}
-                        onChange={(e) => onChange({ project: e.target.value })}
-                    />
-                </div> */}
+                        />
+                        </div>
+                </div> <br />
+               
                 <div>
-                    <label htmlFor="model">Models </label>
-                    <select
+                            <label htmlFor="model">Models </label>
+                            <div>
+
+                                <select
+                                    className="inputFeild"
                         type="select"
                         id="model"
                         value={form.model}
-                    onChange={(e) => onChange({ model: e.target.value })}
-                    >
+                        onChange={(e) => onChange({ model: e.target.value })}
+                        >
                         <option>--select an option--</option>
                         {
                             models.map((model) => (
-
+                                
                                 <option
-                                    value={model._id}
-                                    id={model._id}
+                                key={model._id }
+                                value={model._id}
+                                id={model._id}
                                 >{model.Model_Name}</option>
-
+                                
                             ))
                         }
                     </select>
-                </div>
+                        </div>
+                </div> <br />
                 
                 {/* <div>
                     <label htmlFor="category">Category </label>
@@ -182,8 +188,10 @@ const CreateProjects = () => {
                 
                 <button onClick={handleSubmit} type="submit">
                     Create Project
-                </button>
-            </form>
+                    </button>
+                </div>
+                </Form>
+            </ModelAddForm>
         </div>
     );
 };
