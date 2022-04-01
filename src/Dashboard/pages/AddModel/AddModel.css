@@ -1,0 +1,15 @@
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+}
+.submitButton{
+    color: #fff;
+    background-color: #6773E7;
+}
+.resetButton{
+    color: #fff;
+    background-color: #868aac;
+}

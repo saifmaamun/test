@@ -1,0 +1,15 @@
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+}
+.inputFeild {
+    text-indent: 15px;
+    ;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    width: 500px;
+}

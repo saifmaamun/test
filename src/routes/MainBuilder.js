@@ -30,7 +30,6 @@ const MainBuilder = () => {
           <Layout>
             <Route exact path='/dashboard' component={Dashboard} />
             <Route exact path='/projects' component={Projects} />
-            {/* <Route exact path='/editproject' component={EditProject} /> */}
             <Route exact path='/editproject/:id' component={EditProject} />
             <Route exact path='/models' component={Models} />
             <Route exact path='/addmodel' component={AddModel} />
