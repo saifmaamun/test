@@ -60,11 +60,12 @@ const AddModel = () => {
                     </div>
                 </Form>
                 <Form onSubmit={handleSubmit(onSubmit)}>    
-                    <input {...register("Model_Name", { required: true })} placeholder='Name' /> 
+                    <input {...register("Model_Name", { required: true })} placeholder='Model Name' /> 
 
-                    <input {...register("description", { required: true })} placeholder='Details' />
-                    <input {...register("Type", { required: true })} defaultValue="Original" />
-                    <input {...register("User_Id", { required: true })} defaultValue={user.uid} />
+                    <input {...register("description", { required: true })} placeholder='Model Details' />
+                    <input {...register("Type")} defaultValue="Original" />
+                    <input {...register("User_Id", { required: true })} placeholder='User Id' defaultValue={user.uid} />
+                    <input {...register("Format", { required: true })} placeholder='Model Format' />
                         
                     <input type="url" {...register("Resource_Url", { required: true })} placeholder='Source Url' />
                          
