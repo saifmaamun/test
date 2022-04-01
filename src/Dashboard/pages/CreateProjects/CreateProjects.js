@@ -65,7 +65,6 @@ const CreateProjects = () => {
             Description:form.description,
             Thumbnail: form.thumbnail,
             Status: form.status,
-            format: form.format,
             Model_Id: form.model
         };
 
@@ -162,15 +161,7 @@ const CreateProjects = () => {
                         }
                     </select>
                 </div>
-                <div>
-                    <label htmlFor="format">Format </label>
-                    <input
-                        type="text"
-                        id="format"
-                        value={form.format}
-                        onChange={(e) => onChange({ format: e.target.value })}
-                    />
-                </div>
+                
                 {/* <div>
                     <label htmlFor="category">Category </label>
                     <select
