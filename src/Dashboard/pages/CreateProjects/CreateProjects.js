@@ -81,7 +81,6 @@ const CreateProjects = () => {
                 console.log(err);
             }
             alert('Created Project Successfully')
-            history.push("/projects")
     };
     return (
         <div>
