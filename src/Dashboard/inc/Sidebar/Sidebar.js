@@ -102,7 +102,7 @@ const Sidebar = () => {
             </MenuItem>
           )}
 
-          <MenuItem>
+          <MenuItem onClick={() => history.push('/settings')}>
             <IoIosLogOut />
             Logout
           </MenuItem>

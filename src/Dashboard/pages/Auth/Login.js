@@ -15,8 +15,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
-  const { user, handleUserLogin, error, logOut, googleSignin, facebookSignin
-}=useAuth()
+  const { user, handleUserLogin, error, logOut, googleSignin, facebookSignin}=useAuth()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [agree, setAgree] = useState(false);
