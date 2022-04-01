@@ -80,7 +80,8 @@ const CreateProjects = () => {
             } catch (err) {
                 console.log(err);
             }
-            alert('Created Project Successfully')
+        alert('Created Project Successfully')
+        history.push('/projects')
     };
     return (
         <div>
