@@ -80,8 +80,15 @@ const CreateProjects = () => {
             } catch (err) {
                 console.log(err);
             }
-            alert('Created Project Successfully')
+        alert('Created Project Successfully')
+        history.push('/projects')
     };
+
+    const uploadModel = () => {
+        history.push('/addmodel')
+    }
+
+
     return (
         <div>
             <h1>Create Project</h1>
@@ -141,7 +148,7 @@ const CreateProjects = () => {
                 </div> <br />
                
                 <div>
-                            <label htmlFor="model">Models </label>
+                            <label htmlFor="model">Choose A Model </label>
                             <div>
 
                                 <select
@@ -164,7 +171,10 @@ const CreateProjects = () => {
                             ))
                         }
                     </select>
-                        </div>
+                            </div> <br />
+                            <label htmlFor="model">Or  Upload A Model </label><br />
+                            <button onClick={() => uploadModel()}>Upload Model</button>
+                            
                 </div> <br />
                 
                 {/* <div>

@@ -26,7 +26,15 @@ const AddModel = () => {
         reset()
         history.push("/createprojects")
     }
-
+    const handleFile = (e) => {
+        let files = e.target.files
+        let reader = new FileReader();
+        reader.readAsDataURL(files[0])
+        reader.onload = (e) => {
+            const fileData = e.target.result
+            console.log(fileData)
+        }
+    }
 
     return (
         <>
@@ -68,6 +76,9 @@ const AddModel = () => {
                                 <input {...register("Format", { required: true })} placeholder='Model Format' /><br />
                                 <h3>Add Model Url</h3>
                                 <input type="url" {...register("Resource_Url", { required: true })} placeholder='Source Url' /><br />
+                                <br />
+                                <h3>Upload Model</h3>
+                                <input type="file" onChange={(e)=>handleFile(e)} name="file" placeholder='Model File' /><br />
                                 <br />
                             </div>
                         </div>
