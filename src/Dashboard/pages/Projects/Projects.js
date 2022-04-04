@@ -23,12 +23,12 @@ const Projects = () => {
   useEffect(() => {
     fetch(`${serverUrl}/projects/getAll`)
       .then(res => res.json())
-      // .then(data => console.log(data))
+      // .then(data => setProjects(data.reverse()))
     
 
-      .then(data => { 
+      .then(data => {
         const added = data.filter(items => items.User_Id === user.uid)
-        setProjects(added)
+        setProjects(added.reverse())
       })
     }, [projects])
   

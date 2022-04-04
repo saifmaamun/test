@@ -36,7 +36,10 @@ const CreateProjects = () => {
         fetch(`${serverUrl}/models/getAll`)
             .then(res => res.json())
             // .then(data => console.log(data))
-            .then(data => setModels(data))
+            .then(data => {
+                const added = data.filter(items => items.User_Id === user.uid)
+                setModels(added)
+            })
     }, [])
     // const [user, setUser] = useState("");
     const [project, setProject] = useState("");

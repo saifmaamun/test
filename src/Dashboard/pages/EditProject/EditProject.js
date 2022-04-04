@@ -45,7 +45,6 @@ const EditProject = () => {
             .then(res => res.json())
             .then(data => console.log(data))
     }, [])
-    console.log(url,user)
 
     const generate = () => {
         // "/publishProject/:user/:project/:format"
