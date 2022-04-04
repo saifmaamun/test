@@ -19,6 +19,8 @@ import PrivateRoute from '../Dashboard/pages/PrivateRoute/PrivateRoute';
 import AddModel from '../Dashboard/pages/AddModel/AddModel';
 import CreateProjects from '../Dashboard/pages/CreateProjects/CreateProjects';
 import EditProject from '../Dashboard/pages/EditProject/EditProject';
+import Register from '../Dashboard/pages/Register/Register';
+
 
 const MainBuilder = () => {
   return (
@@ -27,6 +29,8 @@ const MainBuilder = () => {
         <Switch>
           <Route exact path='/' component={LandingPage} />
           <Route exact path='/login' component={Login} />
+          <Route exact path='/register' component={Register} />
+          
           <Layout>
             <Route exact path='/dashboard' component={Dashboard} />
             <Route exact path='/projects' component={Projects} />
