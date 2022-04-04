@@ -62,9 +62,9 @@ const AddModel = () => {
             console.log(res)
             if (res.data.insertedId) {
                 console.log("added", data)
+                alert('Added Successfully')
             }
         })
-    alert('Added Successfully')
     history.push("/createprojects")
     }
 
@@ -94,29 +94,29 @@ const AddModel = () => {
                             <div className="column">
 
                                 <h3>Add Model Name</h3>
-                                <input onBlur={handleModelName} type="text" placeholder='Model Name' /> <br />
+                                <input className="input-field" onBlur={handleModelName} type="text" placeholder='Model Name' /> <br />
                                 <h3>Add Model Description</h3>
-                                <input onBlur={handleModelDetails} type="text" placeholder='Model Details' /><br />
+                                <input className="input-field"  onBlur={handleModelDetails} type="text" placeholder='Model Details' /><br />
                                 <h3>Add Model Type</h3>
-                                <input onBlur={handleModelType} defaultValue="Original" /><br />
+                                <input className="input-field"  onBlur={handleModelType} defaultValue="Original" /><br />
                             </div>
                             <div className="column">
 
                                 <h3>Add User Id</h3>
-                                <input onBlur={handleUserId} type="text" placeholder='User Id' defaultValue={user.uid} /><br />
+                                <input className="input-field"  onBlur={handleUserId} type="text" placeholder='User Id' defaultValue={user.uid} /><br />
                                 <h3>Add Model Format</h3>
-                                <input onBlur={handleModelFormat} placeholder='Model Format' /><br />
+                                <input className="input-field"  onBlur={handleModelFormat} placeholder='Model Format' /><br />
                                 <h3>Add Model Url</h3>
-                                <input onBlur={handleModelUrl} type="url" placeholder='Source Url' /><br />
+                                <input className="input-field"  onBlur={handleModelUrl} type="url" placeholder='Source Url' /><br />
                                 <h3>or</h3>
                                 <h3>Upload Model</h3>
-                                <input type="file" onChange={handleFile} name="file" placeholder='Model File' /><br />
+                                <input className="input-field"  type="file" onChange={handleFile} name="file" placeholder='Model File' /><br />
                                 <br />
                             </div>
                         </div>
                         <div className="row">
                             <div className="column">
-                                <button onClick={handleSubmit}>
+                                <button className="submitButton" onClick={handleSubmit}>
 
                                 Upload
                                 </button>
