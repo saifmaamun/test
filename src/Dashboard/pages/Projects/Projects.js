@@ -15,18 +15,25 @@ import { useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 const Projects = () => {
-  const { serverUrl } = useAuth()
+  const { serverUrl, user } = useAuth()
+  
   const [projects, setProjects] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
     fetch(`${serverUrl}/projects/getAll`)
       .then(res => res.json())
-      // .then(data => console.log(data))
-      .then(data => setProjects(data))
-  }, [])
+      // .then(data => setProjects(data.reverse()))
+    
 
+      .then(data => {
+        const added = data.filter(items => items.User_Id === user.uid)
+        setProjects(added.reverse())
+      })
+    }, [projects])
+  
 
+  // console.log(user.uid, projects.User_Id)
 
 
 

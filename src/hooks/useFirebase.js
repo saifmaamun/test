@@ -19,7 +19,7 @@ initializeAuthentication();
 
 
 const useFirebase = () => {
-    const serverUrl ="http://18.216.106.110:3001"
+    const serverUrl ="https://dev.xarwin.com/api"
     // const serverUrl ="http://localhost:3001"
     const [user, setUser] = useState({})
     const auth = getAuth()
