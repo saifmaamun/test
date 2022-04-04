@@ -6,10 +6,47 @@
     flex: 50%;
 }
 .submitButton{
+    padding: 10px 25px;
+    border: none;
+    outline: none;
+    
+    
+    font-size: 1.25rem;
+    border-radius: 5px;
+    cursor: pointer;
     color: #fff;
     background-color: #6773E7;
 }
 .resetButton{
+    padding: 10px 25px;
+    border: none;
+    outline: none;
+    
+    
+    font-size: 1.25rem;
+    border-radius: 5px;
+    cursor: pointer;
     color: #fff;
     background-color: #868aac;
+}
+.input-field{
+    
+        text-indent: 15px;
+    
+        border: 1px solid;
+        font-size: 20px;
+        padding: 15px;
+        border-radius: 5px;
+        width: 500px;
+    
+}
+button {
+    padding: 10px 25px;
+    border: none;
+    outline: none;
+
+    
+    font-size: 1.25rem;
+    border-radius: 5px;
+    cursor: pointer;
 }

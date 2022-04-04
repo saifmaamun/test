@@ -5,51 +5,20 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 
 const Models = () => {
-  const { serverUrl}=useAuth()
+  const { serverUrl,user}=useAuth()
   const [models, setModels] = useState([])
   
   useEffect(() => {
     fetch(`${serverUrl}/models/getAll`)
       .then(res => res.json())
       // .then(data => console.log(data))
-      .then(data => setModels(data))
+      .then(data => { 
+        const added = data.filter(items => items.User_Id === user.uid)
+        setModels(added)
+      })
   }, [])
-  
+  console.log(models);
 
-  // const modelsData = [
-  //   {
-  //     id: 1,
-  //     name: 'Model 1',
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Model 1',
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'Model 1',
-  //   },
-  //   {
-  //     id: 4,
-  //     name: 'Model 1',
-  //   },
-  //   {
-  //     id: 5,
-  //     name: 'Model 1',
-  //   },
-  //   {
-  //     id: 6,
-  //     name: 'Model 1',
-  //   },
-  //   {
-  //     id: 7,
-  //     name: 'Model 1',
-  //   },
-  //   {
-  //     id: 8,
-  //     name: 'Model 1',
-  //   },
-  // ];
   return (
     <>
       <ModelsContainer>

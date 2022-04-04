@@ -36,7 +36,10 @@ const CreateProjects = () => {
         fetch(`${serverUrl}/models/getAll`)
             .then(res => res.json())
             // .then(data => console.log(data))
-            .then(data => setModels(data))
+            .then(data => {
+                const added = data.filter(items => items.User_Id === user.uid)
+                setModels(added)
+            })
     }, [])
     // const [user, setUser] = useState("");
     const [project, setProject] = useState("");
@@ -83,6 +86,12 @@ const CreateProjects = () => {
         alert('Created Project Successfully')
         history.push('/projects')
     };
+
+    const uploadModel = () => {
+        history.push('/addmodel')
+    }
+
+
     return (
         <div>
             <h1>Create Project</h1>
@@ -142,7 +151,7 @@ const CreateProjects = () => {
                 </div> <br />
                
                 <div>
-                            <label htmlFor="model">Models </label>
+                            <label htmlFor="model">Choose A Model </label>
                             <div>
 
                                 <select
@@ -165,7 +174,10 @@ const CreateProjects = () => {
                             ))
                         }
                     </select>
-                        </div>
+                            </div> <br />
+                            <label htmlFor="model">Or  Upload A Model </label><br />
+                            <button onClick={() => uploadModel()}>Upload Model</button>
+                            
                 </div> <br />
                 
                 {/* <div>

@@ -9,7 +9,6 @@ import useAuth from '../../../../hooks/useAuth';
 import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ id, projectId, projectName, thumbnail, description, userId, modelId, templateId, status, onDelete }) => {
-  console.log(id, modelId);
 
 
 
