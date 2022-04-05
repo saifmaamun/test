@@ -6,7 +6,9 @@ import Spinner from '../../../Utilities/Spinner/Spinner';
 
 const PrivateRoute = ({ children, ...rest }) => {
     const { user, isLoading} = useAuth()
-    if (isLoading){return <Spinner/>}
+    if (isLoading) {
+        return <Spinner />
+    }
     return (
         <Route
             {...rest}
