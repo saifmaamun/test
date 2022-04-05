@@ -59,7 +59,8 @@ const useFirebase = () => {
                 const Name = result.user.displayName
                 const Firebase_Id = result.user.uid
                 saveUser(Email, Name, Firebase_Id, 'POST');
-                console.log(result.user);
+                // console.log(result.user);
+                setIsLoading(false)
                 history.push('/projects')
             })
 }
@@ -92,7 +93,7 @@ const useFirebase = () => {
             else {
                 setUser({});
             }
-            // setIsLoading(false)
+            setIsLoading(false)
         });
 
         return () => unsubscribed;

@@ -30,8 +30,8 @@ const MainBuilder = () => {
           <Route exact path='/' component={LandingPage} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
-          {/* <PrivateRoute> */}
           <Layout>
+            <PrivateRoute>
             <Route exact path='/dashboard' component={Dashboard} />
             <Route exact path='/projects' component={Projects} />
             <Route exact path='/editproject/:id' component={EditProject} />
@@ -44,8 +44,9 @@ const MainBuilder = () => {
             <Route exact path='/change-password' component={ChangePassword} />
             <Route exact path='/notifications' component={Notifications} />
             <Route exact path='/payment-history' component={PaymentHistory} />
+            </PrivateRoute>
           </Layout>
-{/* </PrivateRoute> */}
+
           <Route component={PageNotFound} />
         </Switch>
       </Router>
