@@ -137,7 +137,7 @@ const Register = () => {
         // console.log(result.user.uid);
         // setFirebaseId(result.user.uid)
         // console.log("Firebase id: ", firebaseId)
-        // history.push("/login");
+        history.push("/projects");
       })
       .catch((error) => {
         console.log(error);
