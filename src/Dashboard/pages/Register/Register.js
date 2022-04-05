@@ -74,7 +74,7 @@ const Register = () => {
       );
       // console.log(user.user.uid);
       setFirebaseId((prev) => user.user.uid)
-      history.push("/login");
+      history.push("/projects");
       updateProfile(auth.currentUser, {
         displayName: newUser.name,
       });
@@ -117,9 +117,26 @@ const Register = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         // store it in local storage
+
+        const createUser = async () => {
+          const userData = {
+            Name: result.user.displayName,
+            Email: result.user.email,
+            Firebase_Id: result.user.uid
+          }
+          // console.log(userData)
+          try {
+            const res = await axios.post("http://localhost:3001/users/create", userData)
+            console.log(res)
+          } catch (err) {
+            console.log(err)
+          }
+        }
+    
+        createUser()
         // console.log(result.user.uid);
-        setFirebaseId(result.user.uid)
-        console.log("Firebase id: ", firebaseId)
+        // setFirebaseId(result.user.uid)
+        // console.log("Firebase id: ", firebaseId)
         // history.push("/login");
       })
       .catch((error) => {
