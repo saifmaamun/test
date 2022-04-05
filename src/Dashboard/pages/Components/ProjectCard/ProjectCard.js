@@ -9,8 +9,7 @@ import useAuth from '../../../../hooks/useAuth';
 import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ id, projectId, projectName, thumbnail, description, userId, modelId, templateId, status, onDelete }) => {
-
-
+  
 
 
 
@@ -33,7 +32,7 @@ const ProjectCard = ({ id, projectId, projectName, thumbnail, description, userI
         
         <button onClick={() => onEdit()}>Edit</button>
       
-        <button onClick={() => onDelete(id)}>Delete</button>
+        <button onClick={() => onDelete(id)}> Delete</button>
       </div>
         </ProjectCardWrapper>
   );

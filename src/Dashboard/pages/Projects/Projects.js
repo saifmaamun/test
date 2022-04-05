@@ -13,6 +13,7 @@ import {
 } from './Projects.styled';
 import { useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import Spinner from '../../../Utilities/Spinner/Spinner';
 
 const Projects = () => {
   const { serverUrl, user } = useAuth()
@@ -33,7 +34,7 @@ const Projects = () => {
     }, [projects])
   
 
-  // console.log(user.uid, projects.User_Id)
+  // console.log(user.email)
 
 
 
@@ -43,6 +44,11 @@ const Projects = () => {
   //   setCurrentId(id);
   //   alert(id);
   // };
+
+
+
+
+
   const [currentId, setCurrentId] = useState(null);
 
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -53,10 +59,18 @@ const Projects = () => {
     setPopupOpen(true);
   };
   const deleteConfirm = () => {
-    // Remove a particular project from the list
-    const newProjects = projects.filter((project) => project._id !== currentId);
-    setProjects(newProjects);
-    setPopupOpen(false);
+    // console.log(currentId)
+    fetch(`${serverUrl}/projects/deleteProject/${currentId}`, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.deletedCount) {
+          const remaining = projects.filter(project => project._id !== currentId)
+          setProjects(remaining)
+          setPopupOpen(false);
+        }
+      })
   };
 
   return (

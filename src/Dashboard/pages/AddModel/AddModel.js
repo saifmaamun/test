@@ -10,7 +10,6 @@ import "./AddModel.css"
 const AddModel = () => {
     const { serverUrl, user } = useAuth()
     const history = useHistory();
-    console.log(user)
     const [ Model_Name, setModel_Name ] = useState("");
     const [ description, setDescription ] = useState("");
     const [ Type, setType ] = useState("");
@@ -46,22 +45,16 @@ const AddModel = () => {
         reader.readAsDataURL(files[0])
         reader.onload = (e) => {
            const fileData = { file: e.target.result }
-            console.log(typeof (fileData), fileData)
             setModelFile(fileData)
         }
     }
-    
-    console.log(modelFile)
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const data = { Model_Name, description, Type, User_Id, Format, Resource_Url, modelFile}
-        console.log(data);
         axios.post(`${serverUrl}/models/create`, data)
         .then(res => {
-            console.log(res)
             if (res.data.insertedId) {
-                console.log("added", data)
                 alert('Added Successfully')
             }
         })

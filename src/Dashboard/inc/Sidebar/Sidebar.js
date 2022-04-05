@@ -11,7 +11,9 @@ import { RiBarChart2Fill, RiLayoutMasonryFill } from 'react-icons/ri';
 import { IoIosLogOut } from 'react-icons/io';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import useAuth from '../../../hooks/useAuth';
 const Sidebar = () => {
+  const { logOut}= useAuth()
   const history = useHistory();
   const location = useLocation();
   // get a screen size and set false on mobile screen
@@ -102,7 +104,7 @@ const Sidebar = () => {
             </MenuItem>
           )}
 
-          <MenuItem onClick={() => history.push('/settings')}>
+          <MenuItem onClick={logOut}>
             <IoIosLogOut />
             Logout
           </MenuItem>

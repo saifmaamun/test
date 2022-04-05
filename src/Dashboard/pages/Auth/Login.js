@@ -88,7 +88,7 @@ const Login = () => {
             </label>
             <input type='password' name='password' placebolder='Password' onBlur={hanldePassword} />
           </FormGroup>
-          <div>
+          {/* <div>
             <input type="checkbox" id="rem" onChange={checkboxHandler} />
             <label htmlFor="agree"> Remember Me</label>
           </div>
@@ -98,7 +98,7 @@ const Login = () => {
           <div>
             <input type="checkbox" id="agree" onChange={checkboxHandler} />
             <label htmlFor="agree"> I agree to <b>terms and conditions</b></label>
-          </div>
+          </div> */}
           <br />
          
           
