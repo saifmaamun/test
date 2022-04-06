@@ -40,7 +40,7 @@ const CreateProjects = () => {
                 const added = data.filter(items => items.User_Id === user.uid)
                 setModels(added)
             })
-    }, [])
+    }, [models])
     // const [user, setUser] = useState("");
     const [project, setProject] = useState("");
     const [format, setFormat] = useState("");
@@ -100,7 +100,7 @@ const CreateProjects = () => {
             
                 <Form>
                     <div>
-                <div>
+                {/* <div>
                     <label htmlFor="user">User </label>
                             <div>
                                 
@@ -111,7 +111,7 @@ const CreateProjects = () => {
                         value={user.displayName}
                         />
                         </div>
-                </div> <br />
+                </div> <br /> */}
                 <div>
                             <label htmlFor="project">Project </label>
                             <div>
@@ -137,7 +137,7 @@ const CreateProjects = () => {
                         </div>
                 </div> <br />
                
-                <div>
+                {/* <div>
                             <label htmlFor="userId">userId </label>
                             <div>
 
@@ -148,7 +148,7 @@ const CreateProjects = () => {
                         // onChange={(e) => onChange({ project: e.target.value })}
                         />
                         </div>
-                </div> <br />
+                </div> <br /> */}
                
                 <div>
                             <label htmlFor="model">Choose A Model </label>
