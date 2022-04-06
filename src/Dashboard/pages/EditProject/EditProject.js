@@ -31,7 +31,7 @@ const EditProject = () => {
             fetch(`${serverUrl}/models/${project.Model_Id}`)
             .then(res => res.json())
                 .then(data => setModel(data))
-            const url = `${serverUrl}/publishProject/${user.displayName}/${project.Project_Name}/glb`
+            // const url = `${serverUrl}/publishProject/${user.displayName}/${project.Project_Name}/glb`
             
         }
     }, [project])
