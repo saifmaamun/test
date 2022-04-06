@@ -13,23 +13,23 @@ const CreateProjects = () => {
     const [models, setModels] = useState([])
     const history = useHistory();
     const categories = ["Animals & Pets",
-    "Architecture",
-    "Art & Abstract",
-    "Cars & Vehicles",
-    "Characters & Creatures",
-"Cultural Heritage & History",
-    "Electronics & Gadgets",
-    "Fashion & Style",
-    "Food & Drink",
-    "Furniture & Home",
-    "Music",
-    "Nature & Plants",
-    "News & Politics",
-    "People",
-    "Places & Travel",
-    "Science & Technology",
-    "Sports & Fitness",
-    "Weapons & Military"
+        "Architecture",
+        "Art & Abstract",
+        "Cars & Vehicles",
+        "Characters & Creatures",
+        "Cultural Heritage & History",
+        "Electronics & Gadgets",
+        "Fashion & Style",
+        "Food & Drink",
+        "Furniture & Home",
+        "Music",
+        "Nature & Plants",
+        "News & Politics",
+        "People",
+        "Places & Travel",
+        "Science & Technology",
+        "Sports & Fitness",
+        "Weapons & Military"
     ]
 
     useEffect(() => {
@@ -64,9 +64,9 @@ const CreateProjects = () => {
 
         const userProject = {
             Name: user.displayName,
-            User_Id:user.uid,
+            User_Id: user.uid,
             Project_Name: form.project,
-            Description:form.description,
+            Description: form.description,
             // Thumbnail: form.thumbnail,
             // Status: form.status,
             Model_Id: form.model
@@ -78,11 +78,11 @@ const CreateProjects = () => {
             const res = await axios.post(
                 `${serverUrl}/projects/create`,
                 userProject
-                );
-                console.log(res);
-            } catch (err) {
-                console.log(err);
-            }
+            );
+            console.log(res);
+        } catch (err) {
+            console.log(err);
+        }
         alert('Created Project Successfully')
         history.push('/projects')
     };
@@ -97,10 +97,10 @@ const CreateProjects = () => {
             <h1>Create Project</h1>
             <ModelAddForm>
 
-            
+
                 <Form>
                     <div>
-                {/* <div>
+                        {/* <div>
                     <label htmlFor="user">User </label>
                             <div>
                                 
@@ -112,32 +112,33 @@ const CreateProjects = () => {
                         />
                         </div>
                 </div> <br /> */}
-                <div>
+                        <div>
                             <label htmlFor="project">Project </label>
                             <div>
 
-                    <input
-                        type="text"
-                        id="project"
-                        value={form.project}
-                        onChange={(e) => onChange({ project: e.target.value })}
-                        />
-                        </div>
-                    </div> <br />
-                <div>
+                                <input
+                                    type="text"
+                                    id="project"
+                                    value={form.project}
+                                    onChange={(e) => onChange({ project: e.target.value })}
+                                    required
+                                />
+                            </div>
+                        </div> <br />
+                        <div>
                             <label htmlFor="description">Description </label>
                             <div>
 
-                    <input
-                        type="text"
-                        id="description"
-                        value={form.description}
-                        onChange={(e) => onChange({ description: e.target.value })}
-                        />
-                        </div>
-                </div> <br />
-               
-                {/* <div>
+                                <input
+                                    type="text"
+                                    id="description"
+                                    value={form.description}
+                                    onChange={(e) => onChange({ description: e.target.value })}
+                                />
+                            </div>
+                        </div> <br />
+
+                        {/* <div>
                             <label htmlFor="userId">userId </label>
                             <div>
 
@@ -149,38 +150,38 @@ const CreateProjects = () => {
                         />
                         </div>
                 </div> <br /> */}
-               
-                <div>
+
+                        <div>
                             <label htmlFor="model">Choose A Model </label>
                             <div>
 
                                 <select
                                     className="inputFeild"
-                        type="select"
-                        id="model"
-                        value={form.model}
-                        onChange={(e) => onChange({ model: e.target.value })}
-                        >
-                        <option>--select an option--</option>
-                        {
-                            models.map((model) => (
-                                
-                                <option
-                                key={model._id }
-                                value={model._id}
-                                id={model._id}
-                                >{model.Model_Name}</option>
-                                
-                            ))
-                        }
-                    </select>
+                                    type="select"
+                                    id="model"
+                                    value={form.model}
+                                    onChange={(e) => onChange({ model: e.target.value })}
+                                >
+                                    <option>--select an option--</option>
+                                    {
+                                        models.map((model) => (
+
+                                            <option
+                                                key={model._id}
+                                                value={model._id}
+                                                id={model._id}
+                                            >{model.Model_Name}</option>
+
+                                        ))
+                                    }
+                                </select>
                             </div> <br />
                             <label htmlFor="model">Or  Upload A Model </label><br />
                             <button onClick={() => uploadModel()}>Upload Model</button>
-                            
-                </div> <br />
-                
-                {/* <div>
+
+                        </div> <br />
+
+                        {/* <div>
                     <label htmlFor="category">Category </label>
                     <select
                         type="select"
@@ -197,11 +198,11 @@ const CreateProjects = () => {
                         }
                     </select>
                 </div> */}
-                
-                <button onClick={handleSubmit} type="submit">
-                    Create Project
-                    </button>
-                </div>
+
+                        <button onClick={handleSubmit} type="submit">
+                            Create Project
+                        </button>
+                    </div>
                 </Form>
             </ModelAddForm>
         </div>

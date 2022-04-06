@@ -25,6 +25,7 @@ import useAuth from '../../../hooks/useAuth';
 
 
 const Register = () => {
+  const { serverUrl}=useAuth()
   const [firebaseId, setFirebaseId] = useState("")
   const history = useHistory();
   const [showPassword, setShowPassword] = useState(false);
@@ -91,7 +92,7 @@ const Register = () => {
       }
       // console.log(userData)
       try {
-        const res = await axios.post("http://localhost:3001/users/create", userData)
+        const res = await axios.post(`${serverUrl}/users/create`, userData)
         console.log(res)
       } catch (err) {
         console.log(err)
