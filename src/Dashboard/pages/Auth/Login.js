@@ -66,6 +66,9 @@ const Login = () => {
   const btnHandler = () => {
     alert('The buttion is clickable!');
   };
+  const signUp = () => {
+    history.push("/register");
+  };
 
 
   return (
@@ -134,7 +137,7 @@ const Login = () => {
             <h3>{user.displayName}</h3>
             <Button onClick={logOut}>logOut</Button>
             <h4>
-              Don't have an account? <span>Sign Up</span>
+              Don't have an account? <button onClick={signUp}><span>Sign Up</span></button>
             </h4>
           </LoginButtons>
         </LoginForm>
