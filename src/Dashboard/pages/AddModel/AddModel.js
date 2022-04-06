@@ -104,32 +104,41 @@ const AddModel = () => {
                                 <h3>Add Model Format</h3>
                                 <input className="input-field" onBlur={handleModelFormat} placeholder='Model Format' required /><br />
 
-                            <h3>Add Model Url</h3>
-                            <input className="input-field" onBlur={handleModelUrl} type="url" placeholder='Source Url' required /><br />
-                            <h3>or</h3>
-                            <h3>Upload Model</h3>
-                            <input className="input-field" type="file" onChange={handleFile} name="file" placeholder='Model File' /><br />
-                            <br />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="column">
+                                <h3>Add Model Url</h3>
+                                <input className="input-field" onBlur={handleModelUrl} type="url" placeholder='Source Url' required /><br />
+                            </div> <br />
+                            
+                            <h3 className="or-field" >or</h3> <br />
+                            
+                            <div className="column">
+                                <h3>Upload Model</h3>
+                                <input className="input-field" type="file" onChange={handleFile} name="file" placeholder='Model File' /><br />
+                                <br />
+                            </div>
+
+                        </div>
+                        <div className="row">
+                            <div className="column">
+
+                                <button type="submit" className="submitButton" onClick={handleSubmit}>
+
+                                    Upload
+                                </button>
+                            </div>
+                            <div className="column">
+
+                                <input className="resetButton" type="reset" /><br />
+                            </div>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="column">
-
-                            <button type="submit" className="submitButton" onClick={handleSubmit}>
-
-                                Upload
-                            </button>
-                        </div>
-                        <div className="column">
-
-                            <input className="resetButton" type="reset" /><br />
-                        </div>
-                    </div>
-                </div>
-            </form>
+                </form>
 
 
-        </ModelAddForm>
+            </ModelAddForm>
         </>
     );
 };

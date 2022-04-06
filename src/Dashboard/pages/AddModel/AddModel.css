@@ -32,13 +32,17 @@
 .input-field{
     
         text-indent: 15px;
-    
+        margin-left: 30px;
         border: 1px solid;
         font-size: 20px;
         padding: 15px;
         border-radius: 5px;
         width: 500px;
     
+}
+.or-field{
+    /* text-align: left */
+        padding: 80px 0 0  ;
 }
 button {
     padding: 10px 25px;
