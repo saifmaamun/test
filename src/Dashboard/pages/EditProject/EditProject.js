@@ -31,7 +31,7 @@ const EditProject = () => {
             fetch(`${serverUrl}/models/${project.Model_Id}`)
             .then(res => res.json())
                 .then(data => setModel(data))
-            const url = `${serverUrl}/publishProject/${user.displayName}/${project.Project_Name}/glb`
+            // const url = `${serverUrl}/publishProject/${user.displayName}/${project.Project_Name}/glb`
             
         }
     }, [project])
@@ -40,22 +40,22 @@ const EditProject = () => {
 
 // publish link
     const url = `${serverUrl}/publishProject/${user.displayName}/${project?project.Project_Name:''}`
-    useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => console.log(data))
-    }, [])
+    // useEffect(() => {
+    //     fetch(url)
+    //         .then(res => res.json())
+    //         .then(data => console.log(data))
+    // }, [])
 
-    const generate = () => {
-        // "/publishProject/:user/:project/:format"
-        // useEffect(() => {
-        //     fetch(url)
-        //         .then(res => res.json())
-        //         .then(data => console.log(data))
-        // }, [])
-        console.log(link)
+    // const generate = () => {
+    //     // "/publishProject/:user/:project/:format"
+    //     // useEffect(() => {
+    //     //     fetch(url)
+    //     //         .then(res => res.json())
+    //     //         .then(data => console.log(data))
+    //     // }, [])
+    //     console.log(link)
 
-    }
+    // }
 
 
     return (
