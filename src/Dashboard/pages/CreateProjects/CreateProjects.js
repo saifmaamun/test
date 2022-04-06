@@ -56,7 +56,39 @@ const CreateProjects = () => {
         });
     };
 
-    const handleSubmit = async (e) => {
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     // setUser((prev) => form.user);
+    //     setProject((prev) => form.project);
+    //     setFormat((prev) => form.format);
+
+    //     const userProject = {
+    //         Name: user.displayName,
+    //         User_Id: user.uid,
+    //         Project_Name: form.project,
+    //         Description: form.description,
+    //         // Thumbnail: form.thumbnail,
+    //         // Status: form.status,
+    //         Model_Id: form.model
+    //     };
+
+    //     console.log(userProject);
+
+    //     try {
+    //         const res = await axios.post(
+    //             `${serverUrl}/projects/create`,
+    //             userProject
+    //         );
+    //         console.log(res);
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    //     alert('Created Project Successfully')
+    //     history.push('/projects')
+    // };
+
+
+    const handleSubmit = (e) => {
         e.preventDefault();
         // setUser((prev) => form.user);
         setProject((prev) => form.project);
@@ -73,18 +105,15 @@ const CreateProjects = () => {
         };
 
         console.log(userProject);
-
-        try {
-            const res = await axios.post(
-                `${serverUrl}/projects/create`,
-                userProject
-            );
-            console.log(res);
-        } catch (err) {
-            console.log(err);
-        }
-        alert('Created Project Successfully')
-        history.push('/projects')
+        axios.post(`${serverUrl}/projects/create`, userProject)
+            .then(res => {
+                // console.log(res.config.data, res)
+                // if (res.data.insertedId) {
+                    // }
+                    alert('Added Successfully')
+                    history.push("/projects")
+                })
+        
     };
 
     const uploadModel = () => {
