@@ -75,7 +75,7 @@ const Register = () => {
       );
       // console.log(user.user.uid);
       setFirebaseId((prev) => user.user.uid)
-      history.push("/projects");
+      history.push("/login");
       updateProfile(auth.currentUser, {
         displayName: newUser.name,
       });
