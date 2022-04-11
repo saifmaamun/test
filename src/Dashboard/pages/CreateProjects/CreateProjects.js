@@ -119,6 +119,21 @@ const CreateProjects = () => {
     const uploadModel = () => {
         history.push('/addmodel')
     }
+    
+    // get the project and description from local Storage
+    
+    useEffect(() => {
+        const fromData = window.localStorage.getItem('form')
+        setForm(JSON.parse(fromData))
+    }, [])
+    
+    // save the project and description in local Storage
+    useEffect(() => {
+        window.localStorage.setItem('form', JSON.stringify(form))
+})
+
+
+
 
 
     return (

@@ -31,7 +31,7 @@ const Projects = () => {
         const added = data.filter(items => items.User_Id === user.uid)
         setProjects(added.reverse())
       })
-    }, [projects])
+    }, [])
   
 
   // console.log(user.email)
@@ -59,12 +59,13 @@ const Projects = () => {
     setPopupOpen(true);
   };
   const deleteConfirm = () => {
-    // console.log(currentId)
+    console.log(currentId)
     fetch(`${serverUrl}/projects/deleteProject/${currentId}`, {
       method: 'DELETE'
     })
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         if (data.deletedCount) {
           const remaining = projects.filter(project => project._id !== currentId)
           setProjects(remaining)
