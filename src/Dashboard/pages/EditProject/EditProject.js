@@ -11,6 +11,7 @@ import environmentImage from "./HDR_Free_City_Night_Lights/HDR_Free_City_Night_L
 import handImage from "../../../images/Logo.webp";
 // change
 import { Rnd } from 'react-rnd';
+import Kpage from '../../../Kpage';
 
 
 const EditProject = () => {

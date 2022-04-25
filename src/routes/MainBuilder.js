@@ -20,6 +20,7 @@ import AddModel from '../Dashboard/pages/AddModel/AddModel';
 import CreateProjects from '../Dashboard/pages/CreateProjects/CreateProjects';
 import EditProject from '../Dashboard/pages/EditProject/EditProject';
 import Register from '../Dashboard/pages/Register/Register';
+import Kpage from '../Kpage';
 // import Presentation from '../Dashboard/pages/Presentation/Presentation/Presentation';
 
 
@@ -31,6 +32,7 @@ const MainBuilder = () => {
           <Route exact path='/' component={LandingPage} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
+          <Route exact path='/page' component={Kpage} />
 
           
               <Route exact path='/editproject/:id' component={EditProject} />
