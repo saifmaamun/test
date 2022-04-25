@@ -9,7 +9,9 @@ import { Link } from 'react-router-dom';
 import skyboxImage from "./HDR_Free_City_Night_Lights/HDR_Free_City_Night_Lights_Ref.hdr";
 import environmentImage from "./HDR_Free_City_Night_Lights/HDR_Free_City_Night_Lights_Env.hdr";
 import handImage from "../../../images/Logo.webp";
+// change
 import { Rnd } from 'react-rnd';
+
 
 const EditProject = () => {
     const { user, serverUrl } = useAuth();
@@ -22,27 +24,10 @@ const EditProject = () => {
 
     const [headline, setHeadline] = useState(true);
     const [headlineInput, setHeadlineInput] = useState('');
-    
-    let headStore = []
-    const headTry = (hId) => {
-        const h = headlines.filter(items => items.id === hId)
-        setHeadlineInput(h[0].text)
-        // console.log(headStore)
-        const hText = h[0]
-        let hT = []
-        hT.push(hText)
-        
-        headStore = [...hT]
-        console.log(headStore)
-        // console.log(hText, h[0], headStore)
-
-        
-   }
-
 
 
     const [logo, setlogo] = useState(false);
-    const [logoInput, setLogoInput] = useState('');
+    const [logoInput, setlogoInput] = useState('');
 
     const [text, setText] = useState(false);
     const [textInput, setTextInput] = useState('');
@@ -64,7 +49,8 @@ const EditProject = () => {
     }
 
 
-    // 
+    // change
+// dummy data
     // 
     const headlines = [
         {
@@ -114,6 +100,7 @@ const EditProject = () => {
     // 
 
 
+
     useEffect(() => {
         fetch(`${serverUrl}/projects/${id}`)
             .then(res => res.json())
@@ -150,10 +137,7 @@ const EditProject = () => {
 
 
 
-
-
             <div className="col left">
-                {/* <button onClick={heading}> Click</button> */}
                 <input type="text" onChange={(e) => setHeadlineInput(e.target.value)} />
                 {headline &&
                     <div  >
@@ -167,8 +151,8 @@ const EditProject = () => {
                                 // </Rnd>
                                 <div
                                     key={headline.id}>
-                                    <button onClick={() => headTry(headline.id)}>{headline.text}</button>
-                                    {/* <button onClick={() => setHeadlineInput( headline.text )}>{headline.text}</button> */}
+                                    {/* <button onClick={() => headTry(headline.id)}>{headline.text}</button> */}
+                                    <button onClick={() => setHeadlineInput( headline.text )}>{headline.text}</button>
                                 </div>
                             )
                         }
@@ -178,7 +162,7 @@ const EditProject = () => {
                         {
                             logos.map(logo =>
                                 <div>
-                                    <button onClick={() => setLogoInput(logo.text)}>{logo.text}</button>
+                                    <button onClick={() => setlogoInput(logo.text)}>{logo.text}</button>
                                 </div>
                             )
                         }
@@ -193,45 +177,12 @@ const EditProject = () => {
                             )
                         }
                     </div>}
-
-                {/* {logo && <div>
-
-                    <div className="row">
-                        <div className="column">   <button onClick={() => setlogoInput("Logo 1")}>logo 1</button></div>
-                        <div className="column"><button onClick={() => setlogoInput("Logo 2")}>logo 2</button></div>
-                    </div>
-                    <div className="row">
-                        <div className="column"><button onClick={() => setlogoInput("Logo 3")}>logo 3</button></div>
-                        <div className="column"><button onClick={() => setlogoInput("Logo 4")}>logo 4</button></div>
-                    </div>
-                    <div className="row">
-                        <div className="column"><button onClick={() => setlogoInput("Logo 5")}>logo 5</button></div>
-                        <div className="column"> <button onClick={() => setlogoInput("Logo 6")}>logo 6</button></div>
-                    </div>
-
-                </div>}
-                {text && <div>
-
-                    <div className="row">
-                        <div className="column"><button onClick={() => setTextInput("Text 1")}>Text 1</button></div>
-                        <div className="column"> <button onClick={() => setTextInput("Text 2")}>Text 2</button></div>
-                    </div>
-                    <div className="row">
-                        <div className="column"><button onClick={() => setTextInput("Text 3")}>Text 3</button></div>
-                        <div className="column"> <button onClick={() => setTextInput("Text 4")}>Text 4</button></div>
-                    </div>
-                    <div className="row">
-                        <div className="column"><button onClick={() => setTextInput("Text 5")}>Text 5</button></div>
-                        <div className="column"> <button onClick={() => setTextInput("Text 6")}>Text 6</button></div>
-                    </div>
-
-                </div>} */}
             </div>
             <div className="col content ">
 
                 <model-viewer
                     exposure="1"
-                    style={{ width: '100%', height: '95vh' }}
+                    style={{ width: '100%', height: '100vh' }}
                     src={model ? model.Resource_Url : ""}
                     ios-src=""
                     poster=""
@@ -240,25 +191,26 @@ const EditProject = () => {
                     camera-controls
                     skybox-image={skyboxImage}
                     // environment-image={environmentImage}
+                    // environment-image={environmentImage}
                     auto-rotate
                     ar
                 >
                     <Rnd
-                        
+
                         bounds="window"
                     >
                         <div style={{
-                            
+
                             color: 'red',
                             position: "absolute",
-                            left:"50%",
+                            left: "50%",
                             top: "0px"
                         }}>
                             <img src={handImage} alt="" />
                         </div>
                     </Rnd>
                     <Rnd
-                        
+
                         bounds="window"
                     >
                         <div style={{
@@ -267,12 +219,12 @@ const EditProject = () => {
                             left: "75%",
                             top: "0px"
                         }}>
-                            
+
                             <h3>{logoInput} </h3>
                         </div>
                     </Rnd>
                     <Rnd
-                        
+
                         bounds="window"
                     >
                         <div style={{
@@ -289,15 +241,13 @@ const EditProject = () => {
                             <h3>{headlineInput} </h3>
                         </div>
                     </Rnd>
-                    
                 </model-viewer>
             </div>
             <div className="col right">
 
                 <h2>want to share??</h2>
-                {/* <button onClick={() => generate()}>generate link</button> */}
                 <input className="input-text" type="text" name="Link" value={url} id="" /> <br />
-                {/* <button> <Link to="/presentation">Presentation</Link></button> */}
+                <button> <Link to="/presentation">Presentation</Link></button>
             </div>
 
 

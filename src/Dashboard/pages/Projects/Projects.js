@@ -66,7 +66,7 @@ const Projects = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        if (data.deletedCount) {
+        if (data) {
           const remaining = projects.filter(project => project._id !== currentId)
           setProjects(remaining)
           setPopupOpen(false);

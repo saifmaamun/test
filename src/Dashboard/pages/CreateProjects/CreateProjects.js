@@ -107,24 +107,31 @@ const CreateProjects = () => {
         console.log(userProject);
         axios.post(`${serverUrl}/projects/create`, userProject)
             .then(res => {
-                // console.log(res.config.data, res)
+                // console.log(res)
+                // console.log(res.config.data)
                 // if (res.data.insertedId) {
                     // }
-                    alert('Added Successfully')
-                    history.push("/projects")
                 })
+        
+        localStorage.clear();
+       
+        // console.log(form)
+                alert('Added Successfully')
+                history.push("/projects")
         
     };
 
     const uploadModel = () => {
+        
         history.push('/addmodel')
     }
     
     // get the project and description from local Storage
-    
     useEffect(() => {
         const fromData = window.localStorage.getItem('form')
-        setForm(JSON.parse(fromData))
+        if (fromData) {
+            setForm(JSON.parse(fromData))
+        }
     }, [])
     
     // save the project and description in local Storage
