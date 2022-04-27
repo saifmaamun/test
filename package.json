@@ -28,6 +28,7 @@
     "react-scroll": "^1.8.4",
     "styled-components": "^5.3.3",
     "sweetalert": "^2.1.2",
+    "use-image": "^1.0.12",
     "web-vitals": "^1.0.1"
   },
   "engines": {
